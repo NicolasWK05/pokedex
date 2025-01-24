@@ -37,19 +37,19 @@ public class MenuHandler
                 Console.WriteLine("\nSuccess logging in");
                 break;
             case '2':
-                Console.WriteLine("\nEnter username:");
+                Console.Write("\nEnter username: ");
                 username = Console.ReadLine() ?? string.Empty;
-                Console.WriteLine("Enter password:");
+                Console.Write("\nEnter password: ");
                 password = Console.ReadLine() ?? string.Empty;
 
                 User.Register(username, password);
                 break;
             case '3':
                 // ID search or name/type search
-                Console.WriteLine("\nEnter search term: ");
+                Console.Write("\nEnter search term: ");
                 string search = Console.ReadLine() ?? string.Empty;
 
-                Pokedex.GetPokemonBySearch(search);
+                ListPokemonMenu(Pokedex.GetPokemonBySearch(search));
                 break;
             case '4':
                 ListPokemonMenu(Pokedex.GetAllPokemon());
@@ -63,13 +63,9 @@ public class MenuHandler
         }
     }
 
+    // ListPokemonMenu will display a paginated list of pokemon
     protected void ListPokemonMenu(List<Pokemon> pokemon)
     {
-        // Paginated list of pokemon
-        // 10 per page
-        // Right arrow to go to next page
-        // Left arrow to go to previous page
-        //
 
         int page = 0;
         int pageSize = 10;
